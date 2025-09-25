@@ -21,7 +21,10 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/current-tenant', function () {
-    dd('here');
+    $currentTenant = Tenant::current();
+    echo "Current Tenant <br>";
+    echo "Name: ". $currentTenant->name. "<br>";
+    echo "Domain: ".$currentTenant->domain;
 })->middleware(['tenant']);
 
 require __DIR__.'/auth.php';

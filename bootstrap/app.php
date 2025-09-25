@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->group('tenant', [
             \Spatie\Multitenancy\Http\Middleware\NeedsTenant::class,
             \Spatie\Multitenancy\Http\Middleware\EnsureValidTenantSession::class,
+            \App\Http\Middleware\AuthorizeTenantAccess::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
